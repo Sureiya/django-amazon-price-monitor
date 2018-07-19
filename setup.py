@@ -23,14 +23,11 @@ setup(
     include_package_data=True,
     install_requires=[
         # main dependencies
-        'Django>=1.8,<2',
         # for product advertising api
         'beautifulsoup4',
         'bottlenose>=0.6.2',
         'celery>=4,<5',
         'python-dateutil>=2.5.1',
-        # for pm api
-        'djangorestframework>=3.3',
         # for graphs
         'pygal>=2.0.7',
         'lxml',
