@@ -121,6 +121,8 @@ class ProductAdvertisingAPI(object):
 
             for item_node in item_response.find_all(['item']):
 
+                item_values = dict()
+                import ipdb; ipdb.set_trace()
                 # parse the values
                 try:
                     item_values = {

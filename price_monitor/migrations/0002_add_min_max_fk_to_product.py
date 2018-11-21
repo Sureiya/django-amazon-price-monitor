@@ -14,16 +14,16 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='product',
             name='highest_price',
-            field=models.ForeignKey(related_name='product_highest', to='price_monitor.Price', blank=True, verbose_name='Highest price ever', null=True),
+            field=models.ForeignKey(related_name='product_highest', on_delete=models.CASCADE, to='price_monitor.Price', blank=True, verbose_name='Highest price ever', null=True),
         ),
         migrations.AddField(
             model_name='product',
             name='lowest_price',
-            field=models.ForeignKey(related_name='product_lowest', to='price_monitor.Price', blank=True, verbose_name='Lowest price ever', null=True),
+            field=models.ForeignKey(related_name='product_lowest', on_delete=models.CASCADE, to='price_monitor.Price', blank=True, verbose_name='Lowest price ever', null=True),
         ),
         migrations.AddField(
             model_name='product',
             name='current_price',
-            field=models.ForeignKey(to='price_monitor.Price', null=True, blank=True, verbose_name='Current price', related_name='product_current'),
+            field=models.ForeignKey(to='price_monitor.Price', on_delete=models.CASCADE, null=True, blank=True, verbose_name='Current price', related_name='product_current'),
         ),
     ]

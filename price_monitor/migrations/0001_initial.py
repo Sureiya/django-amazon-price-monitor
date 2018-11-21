@@ -18,7 +18,7 @@ class Migration(migrations.Migration):
                 ('id', models.AutoField(primary_key=True, verbose_name='ID', auto_created=True, serialize=False)),
                 ('public_id', models.CharField(db_index=True, unique=True, editable=False, verbose_name='Public-ID', max_length=36)),
                 ('email', models.EmailField(verbose_name='Email address', max_length=254)),
-                ('owner', models.ForeignKey(to=settings.AUTH_USER_MODEL, verbose_name='Owner')),
+                ('owner', models.ForeignKey(to=settings.AUTH_USER_MODEL, on_delete=models.CASCADE, verbose_name='Owner')),
             ],
             options={
                 'ordering': ('email',),
@@ -78,9 +78,9 @@ class Migration(migrations.Migration):
                 ('public_id', models.CharField(db_index=True, unique=True, editable=False, verbose_name='Public-ID', max_length=36)),
                 ('price_limit', models.FloatField(verbose_name='Price limit')),
                 ('date_last_notification', models.DateTimeField(null=True, verbose_name='Date of last sent notification', blank=True)),
-                ('email_notification', models.ForeignKey(to='price_monitor.EmailNotification', verbose_name='Email Notification')),
-                ('owner', models.ForeignKey(to=settings.AUTH_USER_MODEL, verbose_name='Owner')),
-                ('product', models.ForeignKey(to='price_monitor.Product', verbose_name='Product')),
+                ('email_notification', models.ForeignKey(to='price_monitor.EmailNotification', on_delete=models.CASCADE, verbose_name='Email Notification')),
+                ('owner', models.ForeignKey(to=settings.AUTH_USER_MODEL, on_delete=models.CASCADE, verbose_name='Owner')),
+                ('product', models.ForeignKey(to='price_monitor.Product', on_delete=models.CASCADE, verbose_name='Product')),
             ],
             options={
                 'ordering': ('product__title', 'price_limit', 'email_notification__email'),
@@ -98,7 +98,7 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='price',
             name='product',
-            field=models.ForeignKey(to='price_monitor.Product', verbose_name='Product'),
+            field=models.ForeignKey(to='price_monitor.Product', on_delete=models.CASCADE, verbose_name='Product'),
             preserve_default=True,
         ),
     ]
